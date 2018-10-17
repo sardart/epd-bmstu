@@ -1,0 +1,9 @@
+### epd-bmstu
+
+# Python
+__pycache__/
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
