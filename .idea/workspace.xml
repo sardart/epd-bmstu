@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b95ac34e-bf73-418a-8dbf-7f7c60335b4b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/AppDelegate.py" afterPath="$PROJECT_DIR$/AppDelegate.py" />
       <change beforePath="$PROJECT_DIR$/SettingsWidget.py" afterPath="$PROJECT_DIR$/SettingsWidget.py" />
+      <change beforePath="$PROJECT_DIR$/measurment.py" afterPath="$PROJECT_DIR$/measurment.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +18,8 @@
       <file leaf-file-name="AppDelegate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AppDelegate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-156">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -28,8 +30,8 @@
       <file leaf-file-name="measurment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/measurment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="99" column="77" lean-forward="false" selection-start-line="99" selection-start-column="77" selection-end-line="99" selection-end-column="77" />
+            <state relative-caret-position="29">
+              <caret line="87" column="36" lean-forward="false" selection-start-line="87" selection-start-column="36" selection-end-line="87" selection-end-column="36" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -50,8 +52,8 @@
       <file leaf-file-name="SettingsWidget.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SettingsWidget.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+            <state relative-caret-position="-91">
+              <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -76,6 +78,7 @@
       <list>
         <option value="$PROJECT_DIR$/test.txt" />
         <option value="$PROJECT_DIR$/measurment.py" />
+        <option value="$PROJECT_DIR$/AppDelegate.py" />
         <option value="$PROJECT_DIR$/SettingsWidget.py" />
       </list>
     </option>
@@ -105,6 +108,41 @@
             <path>
               <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
               <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 16-36-21 2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 16-38-51 2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 16-39-19 2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 16-41-17 2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 16-46-54 2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 16-49-56 2018" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epd-bmstu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epd-bmstu" type="462c0819:PsiDirectoryNode" />
+              <item name="Fri Oct 19 17-07-17 2018" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -177,7 +215,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20072551" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -201,14 +239,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../Diploma/electropunctural-diagnostics-python/comtest1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1609">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-28855">
@@ -238,10 +268,18 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../Diploma/electropunctural-diagnostics-python/comtest1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1609">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AppDelegate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -250,18 +288,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/measurment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="99" column="77" lean-forward="false" selection-start-line="99" selection-start-column="77" selection-end-line="99" selection-end-column="77" />
+        <state relative-caret-position="29">
+          <caret line="87" column="36" lean-forward="false" selection-start-line="87" selection-start-column="36" selection-end-line="87" selection-end-column="36" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Fri Oct 19 17-07-17 2018/5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3436">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SettingsWidget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+        <state relative-caret-position="-91">
+          <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

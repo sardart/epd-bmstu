@@ -11,7 +11,7 @@ class App(QMainWindow):
         self.title = 'Электропунтурная диагностика'
         self.left = 0
         self.top = 0
-        self.width = 800
+        self.width = 700
         self.height = 600
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)

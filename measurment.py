@@ -5,7 +5,7 @@ import os
 import time
 
 
-def run(port, speed, message=b'\01', saving=True, uGraph=True, iGraph=False):
+def run(port, speed, dirName, num=1, message=b'\01', saving=True, uGraph=True, iGraph=False):
     ser = serial.Serial(port=port,
                         baudrate=speed,
                         # stopBits=selectedStopBits
@@ -81,9 +81,11 @@ def run(port, speed, message=b'\01', saving=True, uGraph=True, iGraph=False):
 
 
     if saving:
-        dirName = str(time.ctime()).replace(" ", "-")
-        os.mkdir(dirName)
-        saveData(dirName, U, I)
+        try:
+            os.mkdir(dirName)
+        except:
+            pass
+        saveData(dirName, num, U, I)
 
     if uGraph:
         plt.figure(1)
@@ -100,14 +102,17 @@ def calibration(port,speed):
     run(port, speed, message=b'\xFF', saving=False, uGraph=False, iGraph=True)
 
 
-def saveData(dirName, U, I):
+
+
+
+def saveData(dirName, num, U, I):
 
     print("U = ", U)
     print("I = ", I)
 
 
     for i in range(len(U)):
-        fileName = dirName + "/test.txt"
+        fileName = dirName + "/%s.txt" % num
         with open(fileName, "a") as file:
             file.write(str(I[i]) + " " + str(U[i]))
             file.write("\n")

@@ -5,11 +5,12 @@ import os
 import serial.tools.list_ports
 import measurment
 import serial.tools.list_ports
-
+import time
+import threading
 
 rootPath = os.getcwd()
 
-speeds = ["921600", "9600", "19200", "430800"]
+speeds = ["921600", "430800", "9600", "19200"]
 
 # CONSTANTS !!!!!
 byteSize = ["5", "6", "7", "8"]
@@ -18,6 +19,9 @@ stopBits = ["1", "1.5", "2"]
 
 
 class SettingsWidget(QWidget):
+
+    running = False
+
     def __init__(self, parent):
         super(QWidget, self).__init__(parent)
         self.setupUI()
@@ -59,8 +63,8 @@ class SettingsWidget(QWidget):
 
         refreshButton = QPushButton("Обновить")
         refreshButton.clicked.connect(self.updateConnectedDevices)
-        refreshButton.setMaximumWidth(130)
-        refreshButton.setMinimumWidth(130)
+        refreshButton.setMaximumWidth(150)
+        refreshButton.setMinimumWidth(150)
         refreshButton.setIcon(QIcon("refresh.png"))
         self.layout.addWidget(refreshButton, 1, 2)
 
@@ -97,7 +101,7 @@ class SettingsWidget(QWidget):
         self.layout.addWidget(stopBitsLabel, 5, 0)
 
         self.stopBitsBox = QComboBox()
-        self.stopBitsBox.setMinimumWidth(390)
+        self.stopBitsBox.setMinimumWidth(300)
         self.stopBitsBox.addItems(stopBits)
         self.layout.addWidget(self.stopBitsBox, 5, 1)
 
@@ -113,44 +117,49 @@ class SettingsWidget(QWidget):
         self.layout.addWidget(self.stateLabel, 6, 1)
 
 
-
-
         self.startButton = QPushButton("Начать")
-        self.startButton.setMaximumWidth(140)
-        self.startButton.setMinimumWidth(140)
+        self.startButton.setMaximumWidth(150)
+        self.startButton.setMinimumWidth(150)
         self.startButton.setIcon(QIcon("bluetooth-on.png"))
         self.startButton.clicked.connect(self.startMeasurment)
         self.layout.addWidget(self.startButton, 6, 2)
 
 
         self.stopButton = QPushButton("Прервать")
-        self.stopButton.setMaximumWidth(140)
-        self.stopButton.setMinimumWidth(140)
+        self.stopButton.setMaximumWidth(150)
+        self.stopButton.setMinimumWidth(150)
         self.stopButton.setIcon(QIcon("bluetooth-off.png"))
-        # self.disconnectButton.clicked.connect(self.stopMeasurment)
+        self.stopButton.clicked.connect(self.stopMeasurment)
         self.stopButton.setHidden(True)
         self.layout.addWidget(self.stopButton, 6, 2)
 
 
-        self.startButton = QPushButton("Калибровка")
-        self.startButton.setMaximumWidth(140)
-        self.startButton.setMinimumWidth(140)
-        self.startButton.setIcon(QIcon("magnifier.png"))
-        self.startButton.clicked.connect(self.calibration)
-        self.layout.addWidget(self.startButton, 7, 2)
+        self.calibrationButton = QPushButton("Калибровка")
+        self.calibrationButton.setMaximumWidth(150)
+        self.calibrationButton.setMinimumWidth(150)
+        self.calibrationButton.setIcon(QIcon("magnifier.png"))
+        self.calibrationButton.clicked.connect(self.calibration)
+        self.layout.addWidget(self.calibrationButton, 7, 2)
+
+        self.singleMeasurmentButton = QPushButton("Единичное измерение")
+        self.singleMeasurmentButton.setIcon(QIcon("play.png"))
+        self.singleMeasurmentButton.clicked.connect(self.singleMeasurment)
+        self.layout.addWidget(self.singleMeasurmentButton, 7, 1)
 
         os.chdir(rootPath)
 
-    def startMeasurment(self):
+    def singleMeasurment(self):
+
         selectedDevice = self.devicesBox.currentText()
         selectedSpeed = int(self.speedBox.currentText())
         # selectedStopBits = int(self.stop.currentText())
         # selectedByteSize = int(self.byteSizeBox.currentText())
-
+        dirName = str(time.ctime()).replace(":", "-")
         try:
             measurment.run(
                 port=selectedDevice,
-                speed=selectedSpeed
+                speed=selectedSpeed,
+                dirName=dirName
             )
 
         except Exception as error:
@@ -164,6 +173,45 @@ class SettingsWidget(QWidget):
         selectedSpeed = int(self.speedBox.currentText())
         measurment.calibration(selectedDevice, selectedSpeed)
 
+    def stopMeasurment(self):
+        self.running = False
+        self.stateLabel.setText("Отключено")
+        self.stopButton.setHidden(True)
+        self.startButton.setHidden(False)
+
+
+    def startMeasurment(self):
+        self.running = True
+        self.stopButton.setHidden(False)
+        self.startButton.setHidden(True)
+        self.stateLabel.setText("Проводятся измерения")
+
+        selectedDevice = self.devicesBox.currentText()
+        selectedSpeed = int(self.speedBox.currentText())
+        # selectedStopBits = int(self.stop.currentText())
+        # selectedByteSize = int(self.byteSizeBox.currentText())
+        dirName = str(time.ctime()).replace(":", "-")
+
+        def thread():
+            i = 1
+            while self.running:
+                try:
+                    measurment.run(
+                        port=selectedDevice,
+                        speed=selectedSpeed,
+                        dirName=dirName,
+                        num=i,
+                        uGraph=False,
+                        iGraph=False
+                    )
+                    i += 1
+                except Exception as error:
+                    print(error)
+
+
+                time.sleep(10)
+
+        threading.Thread(target=thread).start()
 
 
     def updateConnectedDevices(self):
