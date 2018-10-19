@@ -9,7 +9,7 @@ import serial.tools.list_ports
 
 rootPath = os.getcwd()
 
-speeds = ["921600", "9600", "19200"]
+speeds = ["921600", "9600", "19200", "430800"]
 
 # CONSTANTS !!!!!
 byteSize = ["5", "6", "7", "8"]
