@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 from bitstring import BitArray
 import serial
+import os
+import time
 
 
 def run(port, speed):
@@ -51,10 +53,10 @@ def run(port, speed):
 
     for i in range(len(nums)):
         if str(nums[i])[:4] == "0100":
-            u0.append(
+            i0.append(
                 str(nums[i])[4:] + str(nums[i + 1]) + str(nums[i + 2]) + str(nums[i + 3]) + str(nums[i + 4]))
         elif str(nums[i])[:4] == "0110":
-            i0.append(
+            u0.append(
                 str(nums[i])[4:] + str(nums[i + 1]) + str(nums[i + 2]) + str(nums[i + 3]) + str(nums[i + 4]))
 
     U = []
@@ -66,7 +68,7 @@ def run(port, speed):
             u0[i])[
                                                                                                         21:28] +
                  str(u0[i])[3] + str(u0[i])[29:36])
-        U.append((BitArray(bin=u0bin).int) * 1.2 * 4.6 / (2 ** 24))
+        U.append((BitArray(bin=u0bin).int))
         u1.append(u0bin)
 
     for i in range(len(i0)):
@@ -74,10 +76,30 @@ def run(port, speed):
             i0[i])[
                                                                                                         21:28] +
                  str(i0[i])[3] + str(i0[i])[29:36])
-        I.append((BitArray(bin=i0bin).int) * 1.2 * 4.6 / (2 ** 24))
+        I.append((BitArray(bin=i0bin).int))
+
+
+
+    dirName = str(time.ctime())
+    os.mkdir(dirName)
+    saveData(dirName, U, I)
 
     plt.figure(1)
     plt.plot(range(len(U)), U)
     plt.show()
+
+
+
+def saveData(dirName, U, I):
+
+    print("U = ", U)
+    print("I = ", I)
+
+
+    for i in range(len(U)):
+        fileName = dirName + "/test.txt"
+        with open(fileName, "a") as file:
+            file.write(str(I[i]) + " " + str(U[i]))
+            file.write("\n")
 
 
