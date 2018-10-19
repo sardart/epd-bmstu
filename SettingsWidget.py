@@ -113,6 +113,8 @@ class SettingsWidget(QWidget):
         self.layout.addWidget(self.stateLabel, 6, 1)
 
 
+
+
         self.startButton = QPushButton("Начать")
         self.startButton.setMaximumWidth(140)
         self.startButton.setMinimumWidth(140)
@@ -128,6 +130,14 @@ class SettingsWidget(QWidget):
         # self.disconnectButton.clicked.connect(self.stopMeasurment)
         self.stopButton.setHidden(True)
         self.layout.addWidget(self.stopButton, 6, 2)
+
+
+        self.startButton = QPushButton("Калибровка")
+        self.startButton.setMaximumWidth(140)
+        self.startButton.setMinimumWidth(140)
+        self.startButton.setIcon(QIcon("magnifier.png"))
+        self.startButton.clicked.connect(self.calibration)
+        self.layout.addWidget(self.startButton, 7, 2)
 
         os.chdir(rootPath)
 
@@ -148,6 +158,13 @@ class SettingsWidget(QWidget):
             QMessageBox.question(self, 'Уведомление',
                                  "Не удалось подключиться к %s" % selectedDevice, QMessageBox.Ok |
                                  QMessageBox.Ok)
+
+    def calibration(self):
+        selectedDevice = self.devicesBox.currentText()
+        selectedSpeed = int(self.speedBox.currentText())
+        measurment.calibration(selectedDevice, selectedSpeed)
+
+
 
     def updateConnectedDevices(self):
         self.devicesBox.clear()

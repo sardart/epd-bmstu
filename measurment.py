@@ -5,7 +5,7 @@ import os
 import time
 
 
-def run(port, speed):
+def run(port, speed, message=b'\01', saving=True):
     ser = serial.Serial(port=port,
                         baudrate=speed,
                         # stopBits=selectedStopBits
@@ -14,7 +14,7 @@ def run(port, speed):
     print(ser.getSettingsDict())
     ser.isOpen()
 
-    ser.write(b'\01')
+    ser.write(message)
     data = ""
 
     while True:
@@ -24,7 +24,7 @@ def run(port, speed):
             data += str(response)
             print(response)
             if "x07" in str(response):
-                print("end")
+                # print("end")
                 break
 
     ser.close()
@@ -48,7 +48,7 @@ def run(port, speed):
                 nums.append((bin(ord(i[-1]))[2:].zfill(num_of_bits)))
 
         except:
-            print("error" + i)
+            # print("error" + i)
             pass
 
     for i in range(len(nums)):
@@ -80,14 +80,18 @@ def run(port, speed):
 
 
 
-    dirName = str(time.ctime())
-    os.mkdir(dirName)
-    saveData(dirName, U, I)
+    if saving:
+        dirName = str(time.ctime()).replace(" ", "-")
+        os.mkdir(dirName)
+        saveData(dirName, U, I)
 
     plt.figure(1)
     plt.plot(range(len(U)), U)
     plt.show()
 
+
+def calibration(port,speed):
+    run(port, speed, message=b'\xFF', saving=False)
 
 
 def saveData(dirName, U, I):
