@@ -5,7 +5,7 @@ import os
 import time
 
 
-def run(port, speed, message=b'\01', saving=True):
+def run(port, speed, message=b'\01', saving=True, uGraph=True, iGraph=False):
     ser = serial.Serial(port=port,
                         baudrate=speed,
                         # stopBits=selectedStopBits
@@ -85,13 +85,19 @@ def run(port, speed, message=b'\01', saving=True):
         os.mkdir(dirName)
         saveData(dirName, U, I)
 
-    plt.figure(1)
-    plt.plot(range(len(U)), U)
-    plt.show()
+    if uGraph:
+        plt.figure(1)
+        plt.plot(range(len(U)), U)
+        plt.show()
+
+    if iGraph:
+        plt.figure(2)
+        plt.plot(range(len(I)), I)
+        plt.show()
 
 
 def calibration(port,speed):
-    run(port, speed, message=b'\xFF', saving=False)
+    run(port, speed, message=b'\xFF', saving=False, uGraph=False, iGraph=True)
 
 
 def saveData(dirName, U, I):
