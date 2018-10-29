@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QMessageBox, QApplication, QWidget, QTabWidget, QGridLayout
 from SettingsWidget import SettingsWidget
+from PlotWidget import PlotWidget
 
 
 class App(QMainWindow):
@@ -45,9 +46,12 @@ class MyTableWidget(QWidget):
         # Initialize tab screen
         self.tabs = QTabWidget()
         self.tab1 = SettingsWidget(parent)
+        self.tab2 = PlotWidget(parent)
 
         # Add tabs
         self.tabs.addTab(self.tab1, "")
+        self.tabs.addTab(self.tab2, "")
+
 
         # Add tabs to widget
         self.layout.addWidget(self.tabs)

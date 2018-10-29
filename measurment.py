@@ -22,7 +22,7 @@ def run(port, speed, dirName, num=1, message=b'\01', saving=True, uGraph=True, i
 
         if len(response) != 0:
             data += str(response)
-            print(response)
+            # print(response)
             if "x07" in str(response):
                 # print("end")
                 break
@@ -50,6 +50,10 @@ def run(port, speed, dirName, num=1, message=b'\01', saving=True, uGraph=True, i
         except:
             # print("error" + i)
             pass
+
+
+    for i in nums:
+        print(i)
 
     for i in range(len(nums)):
         if str(nums[i])[:4] == "0100":
@@ -99,14 +103,11 @@ def run(port, speed, dirName, num=1, message=b'\01', saving=True, uGraph=True, i
 
 
 def calibration(port,speed):
-    run(port, speed, message=b'\xFF', saving=False, uGraph=False, iGraph=True)
-
-
+    run(port, speed, "calibration", message=b'\xFF', saving=False, uGraph=False, iGraph=True)
 
 
 
 def saveData(dirName, num, U, I):
-
     print("U = ", U)
     print("I = ", I)
 
