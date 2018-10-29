@@ -22,7 +22,7 @@ def run(port, speed, dirName, num=1, message=b'\01', saving=True, uGraph=True, i
 
         if len(response) != 0:
             data += str(response)
-            # print(response)
+            print(response)
             if "x07" in str(response):
                 # print("end")
                 break

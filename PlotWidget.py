@@ -1,23 +1,6 @@
 from PyQt5.QtGui import QFont, QIcon, QPixmap
 from PyQt5.QtWidgets import QMessageBox,  QPushButton, QWidget, QComboBox, QGridLayout, QLabel, QFileDialog
-from PyQt5.QtCore import Qt
-import os
-from os.path import expanduser
-import serial.tools.list_ports
-import measurment
-import serial.tools.list_ports
-import time
-import threading
 import matplotlib.pyplot as plt
-
-rootPath = os.getcwd()
-
-speeds = ["921600", "430800", "9600", "19200"]
-
-# CONSTANTS !!!!!
-byteSize = ["5", "6", "7", "8"]
-parity = ["Нет", "Чет", "Нечет"]
-stopBits = ["1", "1.5", "2"]
 
 
 class PlotWidget(QWidget):
@@ -27,10 +10,8 @@ class PlotWidget(QWidget):
 
 
     def setupUI(self):
-
         self.layout = QGridLayout(self)
         self.setLayout(self.layout)
-
 
         refreshButton = QPushButton("Выбрать")
         refreshButton.clicked.connect(self.choose_directory)
@@ -38,46 +19,37 @@ class PlotWidget(QWidget):
         refreshButton.setMinimumWidth(150)
         self.layout.addWidget(refreshButton, 5, 0)
 
-
-
-
         self.image = QLabel()
         self.layout.addWidget(self.image, 0, 0, 5, 1)
 
 
-
-
     def choose_directory(self):
         input_dir = QFileDialog.getOpenFileName()
-        # I = []
-        # U = []
-        #
-        # absPath = input_dir[0].split("/")
-        #
-        # path = absPath[-2] + "/" + absPath[-1]
-        #
-        # with open(path, "r") as file:
-        #     for line in file:
-        #         I.append(int(line.split(" ")[0]))
-        #         U.append(int(line.split(" ")[1]))
-        #
-        #
-        # print("U = ", U)
-        # print("I = ", I)
-        #
-        # plt.figure()
-        # plt.subplot(211)
-        # plt.plot(range(len(U)), U)
-        # plt.title("Напряжение")
-        #
-        #
-        # plt.subplot(212)
-        # plt.title("Ток")
-        # plt.plot(range(len(I)), I)
-        #
-        # plt.tight_layout()
-        #
-        # plt.savefig("plot.png")
-        #
-        # self.image.setPixmap(QPixmap("plot.png"))
+        I = []
+        U = []
+
+        absPath = input_dir[0].split("/")
+
+        path = absPath[-2] + "/" + absPath[-1]
+
+        with open(path, "r") as file:
+            for line in file:
+                I.append(int(line.split(" ")[0]))
+                U.append(int(line.split(" ")[1]))
+
+        print("U = ", U)
+        print("I = ", I)
+
+        plt.figure()
+        plt.subplot(211)
+        plt.plot(range(len(U)), U)
+        plt.title("Напряжение")
+
+        plt.subplot(212)
+        plt.title("Ток")
+        plt.plot(range(len(I)), I)
+        plt.tight_layout()
+        plt.savefig("plot.png")
+
+        self.image.setPixmap(QPixmap("plot.png"))
 
