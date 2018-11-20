@@ -46,11 +46,11 @@ class MyTableWidget(QWidget):
         # Initialize tab screen
         self.tabs = QTabWidget()
         self.tab1 = SettingsWidget(parent)
-        self.tab2 = PlotWidget(parent)
+        # self.tab2 = PlotWidget(parent)
 
         # Add tabs
         self.tabs.addTab(self.tab1, "")
-        self.tabs.addTab(self.tab2, "")
+        # self.tabs.addTab(self.tab2, "")
 
 
         # Add tabs to widget

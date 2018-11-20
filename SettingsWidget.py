@@ -134,17 +134,17 @@ class SettingsWidget(QWidget):
         self.layout.addWidget(self.stopButton, 6, 2)
 
 
-        self.calibrationButton = QPushButton("Калибровка")
-        self.calibrationButton.setMaximumWidth(150)
-        self.calibrationButton.setMinimumWidth(150)
-        self.calibrationButton.setIcon(QIcon("magnifier.png"))
-        self.calibrationButton.clicked.connect(self.calibration)
-        self.layout.addWidget(self.calibrationButton, 7, 2)
-
-        self.singleMeasurmentButton = QPushButton("Единичное измерение")
-        self.singleMeasurmentButton.setIcon(QIcon("play.png"))
-        self.singleMeasurmentButton.clicked.connect(self.singleMeasurment)
-        self.layout.addWidget(self.singleMeasurmentButton, 7, 1)
+        # self.calibrationButton = QPushButton("Калибровка")
+        # self.calibrationButton.setMaximumWidth(150)
+        # self.calibrationButton.setMinimumWidth(150)
+        # self.calibrationButton.setIcon(QIcon("magnifier.png"))
+        # self.calibrationButton.clicked.connect(self.calibration)
+        # self.layout.addWidget(self.calibrationButton, 7, 2)
+        #
+        # self.singleMeasurmentButton = QPushButton("Единичное измерение")
+        # self.singleMeasurmentButton.setIcon(QIcon("play.png"))
+        # self.singleMeasurmentButton.clicked.connect(self.singleMeasurment)
+        # self.layout.addWidget(self.singleMeasurmentButton, 7, 1)
 
         os.chdir(rootPath)
 
@@ -152,21 +152,21 @@ class SettingsWidget(QWidget):
 
         selectedDevice = self.devicesBox.currentText()
         selectedSpeed = int(self.speedBox.currentText())
-        # selectedStopBits = int(self.stop.currentText())
-        # selectedByteSize = int(self.byteSizeBox.currentText())
-        dirName = str(time.ctime()).replace(":", "-")
-        try:
-            measurment.run(
-                port=selectedDevice,
-                speed=selectedSpeed,
-                dirName=dirName
-            )
-
-        except Exception as error:
-            print(error)
-            QMessageBox.question(self, 'Уведомление',
-                                 "Не удалось подключиться к %s" % selectedDevice, QMessageBox.Ok |
-                                 QMessageBox.Ok)
+        # # selectedStopBits = int(self.stop.currentText())
+        # # selectedByteSize = int(self.byteSizeBox.currentText())
+        # dirName = str(time.ctime()).replace(":", "-")
+        # try:
+        #     measurment.run(
+        #         port=selectedDevice,
+        #         speed=selectedSpeed,
+        #         dirName=dirName
+        #     )
+        #
+        # except Exception as error:
+        #     print(error)
+        #     QMessageBox.question(self, 'Уведомление',
+        #                          "Не удалось подключиться к %s" % selectedDevice, QMessageBox.Ok |
+        #                          QMessageBox.Ok)
 
     def calibration(self):
         selectedDevice = self.devicesBox.currentText()
@@ -194,22 +194,23 @@ class SettingsWidget(QWidget):
 
         def thread():
             i = 1
-            while self.running:
-                try:
-                    measurment.run(
-                        port=selectedDevice,
-                        speed=selectedSpeed,
-                        dirName=dirName,
-                        num=i,
-                        uGraph=False,
-                        iGraph=False
-                    )
-                    i += 1
-                except Exception as error:
-                    print(error)
+            # while self.running:
+            try:
+                measurment.run(
+                    statusLabel=self.stateLabel,
+                    port=selectedDevice,
+                    speed=selectedSpeed,
+                    dirName=dirName,
+                    num=i,
+                    uGraph=False,
+                    iGraph=False
+                )
+                i += 1
+            except Exception as error:
+                print("Thread", error)
 
 
-                time.sleep(10)
+            # time.sleep(10)
 
         threading.Thread(target=thread).start()
 

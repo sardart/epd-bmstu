@@ -1,6 +1,7 @@
 from PyQt5.QtGui import QFont, QIcon, QPixmap
 from PyQt5.QtWidgets import QMessageBox,  QPushButton, QWidget, QComboBox, QGridLayout, QLabel, QFileDialog
 import matplotlib.pyplot as plt
+import subprocess
 
 
 class PlotWidget(QWidget):
@@ -32,6 +33,11 @@ class PlotWidget(QWidget):
 
         path = absPath[-2] + "/" + absPath[-1]
 
+        import sys
+        # sys.argv = ['arg1', 'arg2']
+        # sys.run ('abc.py')
+        # subprocess.call(executable='showPlot.py', args=path)
+
         with open(path, "r") as file:
             for line in file:
                 I.append(int(line.split(" ")[0]))
@@ -49,6 +55,9 @@ class PlotWidget(QWidget):
         plt.title("Ток")
         plt.plot(range(len(I)), I)
         plt.tight_layout()
+
+
+        # plt.show()
         plt.savefig("plot.png")
 
         self.image.setPixmap(QPixmap("plot.png"))
